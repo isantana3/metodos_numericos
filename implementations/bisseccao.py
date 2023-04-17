@@ -3,10 +3,10 @@ from utils.in_out_workers import TxtWorker
 import math
 
 
-def bisseccao(a: float, b: float, erro: float, function: str, max_interations: float):
+def bisseccao(a: float, b: float, erro: float, function: str, max_iterations: float):
     '''Find the zero of a function with bissection method'''
     i = 0
-    while i < max_interations:
+    while i < max_iterations:
         fa = solve_func(a, function)
         c = (a + b) / 2
         fc = solve_func(c, function)
@@ -28,18 +28,18 @@ def solve_func(x: float, func: str):
 
 
 def run():
-    data = TxtWorker('bissection.txt')
+    data: TxtWorker = TxtWorker('bissection.txt')
     data.read_bissection()
     answers = []
     for i in range(len(data.funcao)):
-        max_interations = math.ceil(math.log2((data.b[i] - data.a[i]) / data.error[i]))
+        max_iterations = math.ceil(math.log2((data.b[i] - data.a[i]) / data.error[i]))
         answers.append(
             bisseccao(
                 a=data.a[i],
                 b=data.b[i],
                 erro=data.error[i],
                 function=data.funcao[i],
-                max_interations=max_interations,
+                max_iterations=max_iterations,
             )
         )
 
