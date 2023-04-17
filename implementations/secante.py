@@ -1,52 +1,50 @@
-# Testado e funcional (sem uso de arquivo pq o python me odeia)
 from utils.eval_exp_mat import func_parser
+from utils.in_out_workers import TxtWorker
+import math
 
 
-def secante(a, b, erro, function):
-    k = 0
+def secante(a: float, b: float, erro: float, function: str, max_iterations: float):
+    i = 0
 
-    while True:
+    while i < max_iterations:
         fa = solve_func(a, function)
         fb = solve_func(b, function)
         x = (fb * a - fa * b) / (fb - fa)
         fx = solve_func(x, function)
-
-        if abs(fx) < erro:
-            break
+        interval = (b - a) / 2
+        if abs(fx) < erro or interval < erro:
+            return {'function': function.strip('\n'), 'solution': f'X{i+1} = {x}'}
         a, b = b, x
-        k += 1
-
-    print("k = " + str(k))
-    print("x = " + str(x))
-    print("erro = " + str(fx))
+        i += 1
+    return {'function': function.strip('\n'), 'solution': f'X{i} = {x}'}
 
 
-# Resolver uma função
 def solve_func(x, func):
+    '''Calculate the function'''
     func = func.replace('x', str(x))
     return func_parser(func)
 
 
-print("QUESTÃO 1")
-# Questão 1
-function = '((sin(x)*cos(x))/((1/1.25)-cos(x)^2))-tan(80/2)'
-a = '0'
-b = '60'
-error = '0.009'
-secante(float(a), float(b), float(error), function)
+def run():
+    data: TxtWorker = TxtWorker('secante.txt')
+    data.read_bissection()
+    print(data.funcao[0])
+    answers = []
+    for i in range(len(data.funcao)):
+        max_iterations = math.ceil(
+            math.log((data.b[i] - data.a[i]) / data.error[i])
+            / math.log((1 + math.sqrt(5)) / 2)
+        )
+        answers.append(
+            secante(
+                a=data.a[i],
+                b=data.b[i],
+                erro=data.error[i],
+                function=data.funcao[i],
+                max_iterations=max_iterations,
+            )
+        )
+    data.write_bissection(answers)
 
 
-# Questão 1
-function = '((sin(x)*cos(x))/((1/1.25)-cos(x)^2))-tan(80/2)'
-a = '0'
-b = '60'
-error = '0.009'
-secante(float(a), float(b), float(error), function)
-
-print("QUESTÃO 2")
-# Questão 2
-function = '((sin(x)*cos(x))/((1/1.25)-cos(x)^2))-tan(80/2)'
-a = '0'
-b = '60'
-error = '0.009'
-secante(float(a), float(b), float(error), function)
+run()
