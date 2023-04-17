@@ -9,6 +9,8 @@ class TxtWorker:
         self.a = []
         self.b = []
         self.error = []
+        self.matrix = []
+        self.legend = []
 
     def read_bissection(self):
         '''Read an file on path "methodos_numericos/inputs/".
@@ -36,3 +38,40 @@ class TxtWorker:
         with open(f'outputs/{self.file_name}', 'w') as f:
             for answer in output:
                 f.write(f'{answer["function"]} :{answer["solution"]}\n')
+
+    def read_matrix(self):
+        with open(f'inputs/{self.file_name}', 'r') as f:
+            matrix = []
+            matrix_legend = []
+            while True:
+                line = f.readline()
+                if not line:
+                    break
+                if len(line) < 3:
+                    continue
+                row = []
+                r_legend = []
+                buffer = ''
+                for char in line:
+                    if char in '0123456789.-+':
+                        buffer += char
+                    elif char.isalpha() or char == '\n':
+                        if char not in self.legend:
+                            r_legend.append(char)
+                        row.append(float(buffer))
+                        buffer = ''
+                    elif char == ',':
+                        buffer += '.'
+                matrix.append(row)
+                self.legend.append(r_legend)
+                if len(matrix) == len(row) - 1:
+                    self.matrix.append(matrix)
+                    matrix = []
+                    r_legend = []
+
+    def write_matrix(self, output: list):
+        with open(f'outputs/{self.file_name}', 'w') as f:
+            for i in range(len(output)):
+                for j in range(len(output[i])):
+                    f.write(f'{self.legend[i][j]} = {output[i][j]}\n')
+                f.write('\n')
