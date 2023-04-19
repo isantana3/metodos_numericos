@@ -29,7 +29,7 @@ def solve_func(x: float, func: str):
 
 def run():
     data: TxtWorker = TxtWorker('bissection.txt')
-    data.read_bissection()
+    data.read_function()
     answers = []
     for i in range(len(data.funcao)):
         max_iterations = math.ceil(math.log2((data.b[i] - data.a[i]) / data.error[i]))
@@ -43,7 +43,7 @@ def run():
             )
         )
 
-    data.write_bissection(answers)
+    data.write_function_solution(answers)
 
 
 run()

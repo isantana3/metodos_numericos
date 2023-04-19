@@ -1,9 +1,8 @@
-# Funcional (sem uso de arquivo pq o python me odeia)
 from decimal import Decimal
 from utils.in_out_workers import TxtWorker
 
 
-def somatorioU(i, j, k, L, U):
+def somatorioU(i: float, j: float, k: int, L: list, U: list):
     total = 0.0
     while True:
         total += L[i][k] * U[k][j]
@@ -13,7 +12,7 @@ def somatorioU(i, j, k, L, U):
     return total
 
 
-def somatorioL(i, j, k, L, U):
+def somatorioL(i: float, j: float, k: int, L: list, U: list):
     total = 0.0
     while True:
         total += L[i][k] * U[k][j]
@@ -23,7 +22,7 @@ def somatorioL(i, j, k, L, U):
     return total
 
 
-def fatoracaoLU(matriz, tamanho):
+def fatoracaoLU(matriz: list, tamanho: int):
 
     L = []
     U = []
@@ -43,7 +42,6 @@ def fatoracaoLU(matriz, tamanho):
     for i in range(tamanho):
         U[0][i] = matriz[0][i]
         L[i][0] = float(Decimal(str(matriz[i][0])) / Decimal(str(matriz[0][0])))
-        # print(U)
 
     for i in range(1, tamanho):
         for j in range(1, tamanho):

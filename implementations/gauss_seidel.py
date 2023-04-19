@@ -2,18 +2,15 @@ from utils.in_out_workers import TxtWorker
 
 
 def calculate_absolute_variation(previous_matrix: list, actual_matrix: list):
+    '''Calculate the absolute variation'''
     response_matrix = []
     for actual, previous in zip(actual_matrix, previous_matrix):
         response_matrix.append(abs(actual - previous))
     return response_matrix
 
 
-def calculate_variations(previous_matrix: list, actual_matrix: list):
-    absolute_variation = calculate_absolute_variation(previous_matrix, actual_matrix)
-    return absolute_variation
-
-
 def solved_the_problem(absolut_variation: list, error: float):
+    '''Verify if the absolut variation is lower than the error limit'''
     for response in absolut_variation:
         if response > error:
             return False
@@ -42,15 +39,17 @@ def gauss_seidel(base_matrix: list, error: float):
             x /= matrix[-1]
             previous_solution[i], actual_solution[i] = actual_solution[i], x
 
-        absolute_variation = calculate_variations(previous_solution, actual_solution)
+        absolute_variation = calculate_absolute_variation(
+            previous_solution, actual_solution
+        )
         maximum_iterations += 1
         if maximum_iterations > 30:
             break
-    print(maximum_iterations)
     return actual_solution
 
 
 def converge(base_matrix: list):
+    '''Verify if the matrix converges or not'''
     element = 0
     for i in range(len(base_matrix)):
         sum_row = 0

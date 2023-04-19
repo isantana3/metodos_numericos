@@ -1,10 +1,10 @@
 from utils.eval_exp_mat import func_parser
 from utils.in_out_workers import TxtWorker
-import math
 import sympy as sp
 
 
 def derivate(function: str):
+    '''Derivate an function F(x), but not solve the problem'''
 
     x = sp.Symbol('x')
     df = sp.diff(function, x, 1)
@@ -12,7 +12,6 @@ def derivate(function: str):
 
 
 def newton_raphson(x1: float, erro: float, function: str):
-    '''Find the zero of a function with bissection method'''
     derivate_function = derivate(function)
     i = 0
     while i < 30:
@@ -40,7 +39,7 @@ def run():
             newton_raphson(x1=data.a[i], erro=data.error[i], function=data.funcao[i])
         )
 
-    data.write_bissection(answers)
+    data.write_function_solution(answers)
 
 
 run()

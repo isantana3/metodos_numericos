@@ -4,7 +4,6 @@ import math
 
 
 def regula_falsi(a: float, b: float, erro: float, function: str, max_iterations: float):
-    '''Find the zero of a function with bissection method'''
     i = 0
     while i < max_iterations:
         fa = solve_func(a, function)
@@ -30,7 +29,7 @@ def solve_func(x: float, func: str):
 
 def run():
     data: TxtWorker = TxtWorker('regula_falsi.txt')
-    data.read_bissection()
+    data.read_function()
     answers = []
     for i in range(len(data.funcao)):
         max_iterations = math.ceil(math.log2((data.b[i] - data.a[i]) / data.error[i]))
@@ -44,7 +43,7 @@ def run():
             )
         )
 
-    data.write_bissection(answers)
+    data.write_function_solution(answers)
 
 
 run()

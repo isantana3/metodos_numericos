@@ -1,23 +1,22 @@
-from utils.eval_exp_mat import func_parser
 from utils.in_out_workers import TxtWorker
 
 
-def m(x, y):
+def m(x: float, y: float):
     '''x = Mix\n y = Mxx'''
     return x / y
 
 
-def l(x, m, y):
+def l(x: float, m: float, y: float):
     '''x = Lx\n m = Mij\n y = Lx-1'''
     return x - m * y
 
 
-def eliminacao_de_gauss(matriz, tamanho):
+def eliminacao_de_gauss(matriz: list, tamanho: int):
+    '''Executa o método da eliminação de Gauss'''
+
     matriz_resp = [1] * tamanho
     for i in range(tamanho - 1):
-
         mx = i + 1
-
         for j in range(i + 1, tamanho):
             mi = m(matriz[mx][i], matriz[i][i])
             mx += 1

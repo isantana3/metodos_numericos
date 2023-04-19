@@ -1,5 +1,6 @@
 class TxtWorker:
-    '''Read and write on txt files. Uses specific format of
+    '''
+    Read and write on txt files. Uses specific format of
     read and write for every single numeric method.
     '''
 
@@ -12,13 +13,14 @@ class TxtWorker:
         self.matrix = []
         self.legend = []
 
-    def read_bissection(self):
-        '''Read an file on path "methodos_numericos/inputs/".
+    def read_function(self):
+        '''
+        Read an file on path "methodos_numericos/inputs/".
         File must be on format:\n
         function F(x)\n
         a\n
         b\n
-        error
+        error\n
         '''
         with open(f'inputs/{self.file_name}', 'r') as f:
             while True:
@@ -33,13 +35,20 @@ class TxtWorker:
                 error_line = f.readline()
                 self.error.append(float(error_line))
 
-    def write_bissection(self, output: list):
+    def write_function_solution(self, output: list):
         '''Write output file on path "methodos_numericos/outputs/".'''
         with open(f'outputs/{self.file_name}', 'w') as f:
             for answer in output:
                 f.write(f'{answer["function"]} :{answer["solution"]}\n')
 
     def read_newton_raphson(self):
+        '''
+        Read an file on path "methodos_numericos/inputs/".
+        File must be on format:\n
+        function F(x)\n
+        x1\n
+        error\n
+        '''
         with open(f'inputs/{self.file_name}', 'r') as f:
             while True:
                 function_line = f.readline()
@@ -52,9 +61,18 @@ class TxtWorker:
                 self.error.append(float(error_line))
 
     def read_matrix(self):
+        '''
+        Read an file on path "methodos_numericos/inputs/".
+        File must be on format:\n
+        linear_expression ~ ax+by+cz... = k\n
+        .
+        .
+        .
+        linear_expression ~ ax+by+cz... = k\n
+        error (Optional)\n
+        '''
         with open(f'inputs/{self.file_name}', 'r') as f:
             matrix = []
-            matrix_legend = []
             while True:
                 line = f.readline()
                 if not line:
@@ -85,6 +103,7 @@ class TxtWorker:
                     r_legend = []
 
     def write_matrix(self, output: list):
+        '''Write output file on path "methodos_numericos/outputs/".'''
         with open(f'outputs/{self.file_name}', 'w') as f:
             for i in range(len(output)):
                 for j in range(len(output[i])):

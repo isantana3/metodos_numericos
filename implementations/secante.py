@@ -27,8 +27,7 @@ def solve_func(x, func):
 
 def run():
     data: TxtWorker = TxtWorker('secante.txt')
-    data.read_bissection()
-    print(data.funcao[0])
+    data.read_function()
     answers = []
     for i in range(len(data.funcao)):
         max_iterations = math.ceil(
@@ -44,7 +43,7 @@ def run():
                 max_iterations=max_iterations,
             )
         )
-    data.write_bissection(answers)
+    data.write_function_solution(answers)
 
 
 run()
