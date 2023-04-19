@@ -4,6 +4,12 @@ tests:
 bissection:
 	python3 implementations/bisseccao.py
 
+regula_falsi:
+	python3 implementations/regula_falsi.py
+
+newton_raphson:
+	python3 implementations/newton_raphson.py
+
 secante:
 	python3 implementations/secante.py
 

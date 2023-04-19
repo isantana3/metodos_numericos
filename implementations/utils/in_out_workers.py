@@ -39,6 +39,18 @@ class TxtWorker:
             for answer in output:
                 f.write(f'{answer["function"]} :{answer["solution"]}\n')
 
+    def read_newton_raphson(self):
+        with open(f'inputs/{self.file_name}', 'r') as f:
+            while True:
+                function_line = f.readline()
+                if not function_line:
+                    break
+                self.funcao.append(function_line)
+                x1_line = f.readline()
+                self.a.append(float(x1_line))
+                error_line = f.readline()
+                self.error.append(float(error_line))
+
     def read_matrix(self):
         with open(f'inputs/{self.file_name}', 'r') as f:
             matrix = []
