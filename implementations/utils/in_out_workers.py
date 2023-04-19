@@ -49,6 +49,9 @@ class TxtWorker:
                     break
                 if len(line) < 3:
                     continue
+                if '=' not in line:
+                    self.error.append(float(line))
+                    continue
                 row = []
                 r_legend = []
                 buffer = ''
