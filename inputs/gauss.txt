@@ -1,7 +1,17 @@
-8k-4y-2z=10
--4k+6y-2z=0
--2k-2y+10z=4
+8x-4y-2z=10
+-4x+6y-2z=0
+-2x-2y+10z=4
 
-14*x+4*y+4*z=100
-4*x+7*y+9*z=100
-4*x+7*y+18*z=100
+4x -1y 0z -1k 0l 0m 0n 0o 0p= 0
+-1x 4y -1z 0k -1l 0m 0n 0o 0p= 0
+0x -1y 4z 0k 0l -1m 0n 0o 0p= 0 
+-1x 0y 0z 4k -1l 0m -1n 0o 0p= 0
+0x -1y 0z -1k 4l -1m 0n -1o 0p= 0
+0x 0y -1z 0k -1l 4m 0n 0o -1p= 0
+0x 0y 0z -1k 0l 0m 4n -1o 0p= 1
+0x 0y 0z 0k -1l 0m -1n 4o -1p= 1
+0x 0y 0z 0k 0l -1m 0n -1o 4p= 1
+
+14x 4y 4z = 100
+4x 7y 19z = 100
+4x 7y 18z = 100

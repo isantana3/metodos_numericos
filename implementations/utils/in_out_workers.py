@@ -96,8 +96,8 @@ class TxtWorker:
                     elif char == ',':
                         buffer += '.'
                 matrix.append(row)
-                self.legend.append(r_legend)
                 if len(matrix) == len(row) - 1:
+                    self.legend.append(r_legend)
                     self.matrix.append(matrix)
                     matrix = []
                     r_legend = []

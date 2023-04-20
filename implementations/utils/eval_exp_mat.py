@@ -108,6 +108,7 @@ fn = {
     "cos": math.cos,
     "tan": math.tan,
     "exp": math.exp,
+    "log": math.log,
     "abs": abs,
     "trunc": int,
     "round": round,
@@ -147,6 +148,7 @@ def evaluate_stack(s):
             return int(op)
         except ValueError:
             return float(op)
+
 
 def func_parser(s: str):
     exprStack[:] = []

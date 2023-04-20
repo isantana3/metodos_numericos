@@ -1,6 +1,17 @@
 tests:
 	python3 implementations/tests.py
 	
+all:
+	make  bissection
+	make  regula_falsi
+	make  newton_raphson
+	make  secante
+	make  gauss
+	make  lu
+	make  jacobi
+	make  gs
+	make  inversao
+
 bissection:
 	python3 implementations/bisseccao.py
 
@@ -24,3 +35,6 @@ jacobi:
 
 gs:
 	python3 implementations/gauss_seidel.py
+
+inversao:
+	python3 implementations/inversao.py

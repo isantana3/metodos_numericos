@@ -8,7 +8,7 @@ def derivate(function: str):
 
     x = sp.Symbol('x')
     df = sp.diff(function, x, 1)
-    return str(df)
+    return str(df).replace('**', '^')
 
 
 def newton_raphson(x1: float, erro: float, function: str):
