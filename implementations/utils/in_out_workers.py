@@ -12,6 +12,8 @@ class TxtWorker:
         self.error = []
         self.matrix = []
         self.legend = []
+        self.point_x = []
+        self.point_y = []
 
     def read_function(self):
         '''
@@ -109,3 +111,25 @@ class TxtWorker:
                 for j in range(len(output[i])):
                     f.write(f'{self.legend[i][j]} = {output[i][j]}\n')
                 f.write('\n')
+
+    def read_2d_points(self):
+         with open(f'inputs/{self.file_name}', 'r') as f:
+            x = []
+            y = []
+            while True:
+                point = f.readline()
+                if not point and len(x) == 0:
+                    break
+                if len(point) > 3:
+                    x.append(float(point.split(' ')[0]))
+                    y.append(float(point.split(' ')[1]))
+                else:
+                    self.point_x.append(x)
+                    self.point_y.append(y)
+                    x = []
+                    y = []
+
+    def write_2d_points(self, output: list):
+        with open(f'outputs/{self.file_name}', 'w') as f:
+            for point in output:
+                f.write(f'y = {point[0]} + {point[1]}\n')

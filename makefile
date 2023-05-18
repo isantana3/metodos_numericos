@@ -2,7 +2,7 @@ tests:
 	python3 implementations/tests.py
 	
 all:
-	make  bissection
+	make  linear_regression
 	make  regula_falsi
 	make  newton_raphson
 	make  secante
@@ -12,8 +12,8 @@ all:
 	make  gs
 	make  inversao
 
-bissection:
-	python3 implementations/bisseccao.py
+linear_regression:
+	python3 implementations/linear_regression.py
 
 regula_falsi:
 	python3 implementations/regula_falsi.py
