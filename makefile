@@ -1,6 +1,3 @@
-tests:
-	python3 implementations/tests.py
-	
 all:
 	make  linear_regression
 	make  mmq_discreet
@@ -13,7 +10,6 @@ all:
 	make  simpson_13
 	make  simpson_38
 	make  richards
-	make  quad_gauss
 
 linear_regression:
 	python3 implementations/linear_regression.py
@@ -47,7 +43,3 @@ simpson_38:
 
 richards:
 	python3 implementations/extrapolation_of_richards.py
-
-quad_gauss:
-	python3 implementations/square_of_gauss.py
-

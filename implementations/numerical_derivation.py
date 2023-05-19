@@ -4,8 +4,6 @@ import math
 
 
 def derivate(function: str, right: float, left: float, h: float):
-    print(f'rgt: {right}')
-    print(f'lft: {left}')
     return (solve_func(right, function) - solve_func(left, function)) / h
 
 
@@ -34,9 +32,7 @@ def solve_func(x: float, func: str):
         func = func.replace('x', str(x)).strip('\n')
         return eval(func)
     except:
-        import pdb
-
-        pdb.set_trace()
+        return 0
 
 
 def run():

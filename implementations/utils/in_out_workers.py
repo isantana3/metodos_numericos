@@ -149,7 +149,7 @@ class TxtWorker:
                         response += '+ '
                     else:
                         response += '- '
-                    response += f'{answer[0]:.5f}^{i} '
+                    response += f'{answer[0]:.5f}x^{i} '
                 f.write(f'f{i}(x) = {response}\n')
 
     def write_lines(self, output: list):
