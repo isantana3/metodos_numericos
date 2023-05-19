@@ -12,6 +12,8 @@ all:
 	make  multi_trap
 	make  simpson_13
 	make  simpson_38
+	make  richards
+	make  quad_gauss
 
 linear_regression:
 	python3 implementations/linear_regression.py
@@ -42,4 +44,10 @@ simpson_13:
 
 simpson_38:
 	python3 implementations/simpson_3-8.py
+
+richards:
+	python3 implementations/extrapolation_of_richards.py
+
+quad_gauss:
+	python3 implementations/square_of_gauss.py
 

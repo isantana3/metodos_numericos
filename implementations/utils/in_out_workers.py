@@ -14,6 +14,8 @@ class TxtWorker:
         self.legend = []
         self.point_x = []
         self.point_y = []
+        self.n1 = []
+        self.n2 = []
 
     def read_function(self):
         '''
@@ -164,3 +166,36 @@ class TxtWorker:
                 f.write(f'    1ª centrada: {derivations[0][1]}\n')
                 f.write(f'    1ª progressiva: {derivations[0][2]}\n')
                 f.write(f'    2ª ordem: {derivations[1]}\n\n')
+
+    def read_integration(self):
+        '''
+        Read an file on path "methodos_numericos/inputs/".
+        The n1 and n2 are optional, if don't wanna pass then, input a newline
+        File must be on format:\n
+        function F(x)\n
+        a\n
+        b\n
+        n1\n
+        n2\n
+        '''
+        with open(f'inputs/{self.file_name}', 'r') as f:
+            while True:
+                function_line = f.readline()
+                if not function_line:
+                    break
+                self.funcao.append(function_line)
+                a_line = f.readline()
+                self.a.append(float(a_line))
+                b_line = f.readline()
+                self.b.append(float(b_line))
+                try:
+                    n1_line = f.readline()
+                    self.n1.append(int(n1_line))
+                except:
+                    self.n1.append(2)
+                try:
+                    n2_line = f.readline()
+                    self.n2.append(int(n2_line))
+                except:
+                    self.n2.append(4)
+                    continue
