@@ -35,7 +35,10 @@ class TxtWorker:
                 b_line = f.readline()
                 self.b.append(float(b_line))
                 error_line = f.readline()
-                self.error.append(float(error_line))
+                try:
+                    self.error.append(float(error_line))
+                except:
+                    pass
 
     def write_function_solution(self, output: list):
         '''Write output file on path "methodos_numericos/outputs/".'''
@@ -113,7 +116,7 @@ class TxtWorker:
                 f.write('\n')
 
     def read_2d_points(self):
-         with open(f'inputs/{self.file_name}', 'r') as f:
+        with open(f'inputs/{self.file_name}', 'r') as f:
             x = []
             y = []
             while True:
@@ -132,4 +135,32 @@ class TxtWorker:
     def write_2d_points(self, output: list):
         with open(f'outputs/{self.file_name}', 'w') as f:
             for point in output:
-                f.write(f'y = {point[0]} + {point[1]}\n')
+                f.write(f'y = {point[0]} + {point[1]}X\n')
+
+    def write_polynomials(self, output: list):
+        with open(f'outputs/{self.file_name}', 'w') as f:
+            for answer in output:
+                print(answer)
+                response = f'{answer[0]:.5f} '
+                for i in range(1, len(answer)):
+                    if answer[i] > 0:
+                        response += '+ '
+                    else:
+                        response += '- '
+                    response += f'{answer[0]:.5f}^{i} '
+                f.write(f'f{i}(x) = {response}\n')
+
+    def write_lines(self, output: list):
+        with open(f'outputs/{self.file_name}', 'w') as f:
+            for line in output:
+                f.write(line + '\n')
+
+    def write_derivation(self, output: list):
+        with open(f'outputs/{self.file_name}', 'w') as f:
+            i = 0
+            for derivations in output:
+                f.write(f'{self.funcao[i]}')
+                f.write(f'    1ª retardada: {derivations[0][0]}\n')
+                f.write(f'    1ª centrada: {derivations[0][1]}\n')
+                f.write(f'    1ª progressiva: {derivations[0][2]}\n')
+                f.write(f'    2ª ordem: {derivations[1]}\n\n')

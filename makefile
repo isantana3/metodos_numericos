@@ -3,38 +3,43 @@ tests:
 	
 all:
 	make  linear_regression
-	make  regula_falsi
-	make  newton_raphson
-	make  secante
-	make  gauss
-	make  lu
-	make  jacobi
-	make  gs
-	make  inversao
+	make  mmq_discreet
+	make  newton_dd
+	make  lagrange
+	make  mmq_continuos
+	make  derivation
+	make  simple_trap
+	make  multi_trap
+	make  simpson_13
+	make  simpson_38
 
 linear_regression:
 	python3 implementations/linear_regression.py
 
-regula_falsi:
-	python3 implementations/regula_falsi.py
+mmq_discreet:
+	python3 implementations/mmq_discreet.py
 
-newton_raphson:
-	python3 implementations/newton_raphson.py
+newton_dd:
+	python3 implementations/newton_dd.py
 
-secante:
-	python3 implementations/secante.py
+lagrange:
+	python3 implementations/lagrange_polynomials.py
 
-gauss:
-	python3 implementations/eliminacao_de_gauss.py
+mmq_continuos:
+	python3 implementations/mmq_continuos.py
 
-lu:
-	python3 implementations/fatoracaoLU.py
+derivation:
+	python3 implementations/numerical_derivation.py
 
-jacobi:
-	python3 implementations/jacobi.py
+simple_trap:
+	python3 implementations/trapezoidal_integration.py
 
-gs:
-	python3 implementations/gauss_seidel.py
+multi_trap:
+	python3 implementations/trapezoidal_mult_integration.py
 
-inversao:
-	python3 implementations/inversao.py
+simpson_13:
+	python3 implementations/simpson_1-3.py
+
+simpson_38:
+	python3 implementations/simpson_3-8.py
+
