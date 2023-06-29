@@ -12,6 +12,7 @@ class TxtWorker:
         self.error = []
         self.matrix = []
         self.legend = []
+        self.interval = []
 
     def read_function(self):
         '''
@@ -109,3 +110,29 @@ class TxtWorker:
                 for j in range(len(output[i])):
                     f.write(f'{self.legend[i][j]} = {output[i][j]}\n')
                 f.write('\n')
+
+    def read_euler(self):
+        with open(f'inputs/{self.file_name}', 'r') as f:
+            interval = []
+            while 1:
+                line = f.readline()
+                if not line:
+                    break
+                while line != '\n':
+                    interval.append(line)
+                    line = f.readline()
+                line = f.readline()
+                while line != '\n':
+                    if not line:
+                        break
+                    self.a.append(float(line))
+                    self.funcao.append(f.readline())
+                    self.b.append(float(f.readline()))
+                    line = f.readline()
+                self.interval.append(interval)
+
+    def write_euler(self, output: list):
+        '''Write output file on path "methodos_numericos/outputs/".'''
+        with open(f'outputs/{self.file_name}', 'w') as f:
+            for answer in output:
+                f.write(str(answer) + '\n\n')
