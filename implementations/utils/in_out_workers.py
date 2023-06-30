@@ -136,3 +136,31 @@ class TxtWorker:
         with open(f'outputs/{self.file_name}', 'w') as f:
             for answer in output:
                 f.write(str(answer) + '\n\n')
+
+    def read_shooting(self):
+        with open(f'inputs/{self.file_name}', 'r') as f:
+            while 1:
+                interval = []
+                a = f.readline()
+                if not a:
+                    break
+                while a != '\n':
+                    interval.append(a)
+                    a = f.readline()
+                a = f.readline()
+                while a != '\n':
+                    if not a:
+                        break
+                    self.a.append(float(a))  # y0
+                    self.b.append(float(f.readline()))  # y1
+                    self.error.append(f.readline())  # y
+                    self.funcao.append(f.readline())  # z
+                    self.legend.append(float(f.readline()))  # h
+                    a = f.readline()
+                self.interval.append(interval)
+
+    def write_euler(self, output: list):
+        '''Write output file on path "methodos_numericos/outputs/".'''
+        with open(f'outputs/{self.file_name}', 'w') as f:
+            for answer in output:
+                f.write(str(answer) + '\n\n')

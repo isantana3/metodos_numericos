@@ -4,9 +4,9 @@ tests:
 all:
 	make  euler
 	make  heun
-	make  newton_raphson
-	make  secante
-	make  gauss
+	make  ralston
+	make  rungekutta
+	make  shooting
 	make  lu
 	make  jacobi
 	make  gs
@@ -18,14 +18,14 @@ euler:
 heun:
 	python3 implementations/heun.py
 
-newton_raphson:
-	python3 implementations/newton_raphson.py
+ralston:
+	python3 implementations/ralston.py
 
-secante:
-	python3 implementations/secante.py
+rungekutta:
+	python3 implementations/runge_kutta_4th_order.py
 
-gauss:
-	python3 implementations/eliminacao_de_gauss.py
+shooting:
+	python3 implementations/shooting.py
 
 lu:
 	python3 implementations/fatoracaoLU.py
