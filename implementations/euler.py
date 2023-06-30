@@ -2,8 +2,7 @@ from utils.in_out_workers import TxtWorker
 
 
 def steps(h, interval):
-    aux = (float(interval[1]) - float(interval[0])) / h
-    return round(aux, 0)
+    return round(((float(interval[1]) - float(interval[0])) / h), 0)
 
 
 def calculate(f, x, y):
@@ -22,35 +21,6 @@ def euler(x, y0, f, h, interval):
         x = x + h
         y.append(str(i) + ': ' + str(round(yh, 3)))
     return y
-
-
-# arq=open('euler.txt','r')
-# final=open('eulerf.txt', 'w')
-
-# while 1:
-#     interval=[]
-#     a = arq.readline()
-#     if not a:
-#         break
-#     while a!='\n':
-#         interval.append(a)
-#         a = arq.readline()
-#     a=arq.readline()
-#     while a!='\n':
-#         if not a:
-#             break
-#         y0=a
-#         a = arq.readline()
-#         f=a
-#         a = arq.readline()
-#         h=a
-#         a = arq.readline()
-
-#     g=euler(0,float(y0),f,float(h), interval)
-
-#     final.write(str(g)+'\n\n')
-# arq.close
-# final.close
 
 
 def run():

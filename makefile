@@ -3,7 +3,7 @@ tests:
 	
 all:
 	make  euler
-	make  regula_falsi
+	make  heun
 	make  newton_raphson
 	make  secante
 	make  gauss
@@ -15,8 +15,8 @@ all:
 euler:
 	python3 implementations/euler.py
 
-regula_falsi:
-	python3 implementations/regula_falsi.py
+heun:
+	python3 implementations/heun.py
 
 newton_raphson:
 	python3 implementations/newton_raphson.py
