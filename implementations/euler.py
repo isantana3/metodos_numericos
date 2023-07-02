@@ -1,36 +1,32 @@
-from utils.in_out_workers import TxtWorker
+from utils.in_out_workers import TxtWorkerV3
 
 
 def steps(h, interval):
     return round(((float(interval[1]) - float(interval[0])) / h), 0)
 
 
-def calculate(f, x, y):
-    expression = f.split('x')
-    expression = str(x).join(expression)
-    expression = expression.split('y')
-    expression = str(y).join(expression)
-    return eval(expression)
+def solve_function(f, x, y):
+    function = f.replace('x', str(x)).replace('y', str(y))
+    return eval(function)
 
 
 def euler(x, y0, f, h, interval):
-    y = []
+    answers = []
     for i in range(int(steps(h, interval))):
-        yh = y0 + calculate(f, x, y0) * h
-        y0 = yh
+        y0 = y0 + solve_function(f, x, y0) * h
         x = x + h
-        y.append(str(i) + ': ' + str(round(yh, 3)))
-    return y
+        answers.append(str(i) + ': ' + str(round(y0, 3)))
+    return answers
 
 
 def run():
-    data: TxtWorker = TxtWorker('euler.txt')
-    data.read_euler()
+    data: TxtWorkerV3 = TxtWorkerV3('euler.txt')
+    data.read()
     answers = []
-    for i in range(len(data.a)):
-        answers.append(euler(0, data.a[i], data.funcao[i], data.b[i], data.interval[i]))
+    for i in range(len(data.y0)):
+        answers.append(euler(0, data.y0[i], data.f[i], data.h[i], data.interval[i]))
 
-    data.write_euler(answers)
+    data.write(answers)
 
 
 run()
