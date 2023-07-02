@@ -1,3 +1,3 @@
-from . import eval_exp_mat, in_out_workers
+from . import in_out_workers
 
-__all__ = ["eval_exp_mat", "in_out_workers"]
+__all__ = ["in_out_workers"]

@@ -1,4 +1,5 @@
 from utils.in_out_workers import TxtWorkerV3
+import math
 
 
 def steps(h, interval):
@@ -6,18 +7,19 @@ def steps(h, interval):
 
 
 def solve_function(f, x, y):
-    function = f.replace('x', str(x)).replace('y', str(y))
+    function = f.replace(' x', str(x)).replace('y', str(y))
     return eval(function)
 
 
 def ralston(x, y0, f, h, intervalo):
     answers = []
+    answers.append(str(0) + ': ' + str(round(y0, 3)))
     for i in range(int(steps(h, intervalo))):
         k1 = solve_function(f, x, y0)
         k2 = solve_function(f, x + h, y0 + k1 * h)
         y0 = y0 + ((2 / 3) * k1 + (2 / 3) * k2) * h
         x = x + h
-        answers.append(str(i) + ': ' + str(round(y0, 3)))
+        answers.append(str(i * h) + ': ' + str(round(y0, 3)))
     return answers
 
 

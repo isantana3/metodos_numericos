@@ -1,4 +1,5 @@
 from utils.in_out_workers import TxtWorkerV3
+import math
 
 
 def steps(h, interval):
@@ -6,16 +7,17 @@ def steps(h, interval):
 
 
 def solve_function(f, x, y):
-    function = f.replace('x', str(x)).replace('y', str(y))
+    function = f.replace(' x', str(x).replace('y', str(y)))
     return eval(function)
 
 
-def euler(x, y0, f, h, interval):
+def euler(x, y, f, h, interval):
     answers = []
-    for i in range(int(steps(h, interval))):
-        y0 = y0 + solve_function(f, x, y0) * h
+    answers.append(str(0) + ': ' + str(round(y, 3)))
+    for i in range(1, int(steps(h, interval)) + 1):
+        y = y + solve_function(f, x, y) * h
         x = x + h
-        answers.append(str(i) + ': ' + str(round(y0, 3)))
+        answers.append(str(i * h) + ': ' + str(round(y, 3)))
     return answers
 
 

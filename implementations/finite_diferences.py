@@ -1,4 +1,5 @@
 from utils.in_out_workers import TxtWorkerV3
+import math
 
 
 def steps(h, interval):
@@ -6,19 +7,19 @@ def steps(h, interval):
 
 
 def solve_function(f, x, y):
-    function = f.replace('x', str(x)).replace('y', str(y))
+    function = f.replace(' x', str(x)).replace('y', str(y))
     return eval(function)
 
 
-def finite_differences(x, y, equation, step_size, interval):
+def finite_differences(x, y, equation, h, interval):
     answers = []
-    total_steps = int(steps(step_size, interval))
+    total_steps = int(steps(h, interval))
     answers.append(str(0) + ': ' + str(round(y, 3)))
 
     for i in range(1, total_steps + 1):
-        y = y + step_size * solve_function(equation, x, y)
-        x = x + step_size
-        answers.append(str(i) + ': ' + str(round(y, 3)))
+        y = y + h * solve_function(equation, x, y)
+        x = x + h
+        answers.append(str(i * h) + ': ' + str(round(y, 3)))
 
     return answers
 

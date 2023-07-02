@@ -32,15 +32,18 @@ def rungekutta(interval, y0, z, f, g, h):
 
 
 def shooting(y1, y2, b, interval, h):
-    y = []
-    a = int(steps(h, interval))
+    specific_for_question = [0, 200, 400, 600, 800, 1000]
+    answers = []
+    a = int(steps(h, interval) + 1)
     for i in range(a):
-        y.append(
-            str(i)
+        y = (
+            str(i / 100)
             + ': '
             + str(round((y1[i] + ((b - y1[a - 1]) / y2[a - 1]) * y2[i]), 3))
         )
-    return y
+        if i in specific_for_question:
+            answers.append(y)
+    return answers
 
 
 def run():

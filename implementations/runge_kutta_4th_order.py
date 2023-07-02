@@ -1,4 +1,5 @@
 from utils.in_out_workers import TxtWorkerV3
+import math
 
 
 def steps(h, interval):
@@ -6,20 +7,21 @@ def steps(h, interval):
 
 
 def solve_function(f, x, y):
-    function = f.replace('x', str(x)).replace('y', str(y))
+    function = f.replace(' x', str(x)).replace('y', str(y))
     return eval(function)
 
 
 def rungekutta(x, y0, f, h, interval):
     answers = []
-    for i in range(int(steps(h, interval))):
+    answers.append(str(0) + ': ' + str(round(y0, 3)))
+    for i in range(1, int(steps(h, interval) + 1)):
         k1 = solve_function(f, x, y0)
         k2 = solve_function(f, x + (1 / 2) * h, y0 + (1 / 2) * k1 * h)
         k3 = solve_function(f, x + (1 / 2) * h, y0 + (1 / 2) * k2 * h)
         k4 = solve_function(f, x + h, y0 + k3 * h)
         y0 = y0 + (1 / 6) * (k1 + 2 * k2 + 2 * k3 + k4) * h
         x = x + h
-        answers.append(str(i) + ': ' + str(round(y0, 3)))
+        answers.append(str(i * h) + ': ' + str(round(y0, 3)))
     return answers
 
 

@@ -49,11 +49,11 @@ class TxtWorkerV3:
                 while a != '\n':
                     if not a:
                         break
-                    self.y0.append(float(a))  # y0
-                    self.y1.append(float(f.readline()))  # y1
-                    self.y.append(f.readline())  # y
-                    self.z.append(f.readline())  # z
-                    self.h.append(float(f.readline()))  # h
+                    self.y0.append(float(a))
+                    self.y1.append(float(f.readline()))
+                    self.y.append(f.readline())
+                    self.z.append(f.readline())
+                    self.h.append(float(f.readline()))
                     a = f.readline()
                 self.interval.append(interval)
 
